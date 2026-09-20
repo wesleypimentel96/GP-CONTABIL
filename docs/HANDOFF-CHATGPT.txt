@@ -1,0 +1,175 @@
+﻿# Prompt â€” GP ContÃ¡bil para ChatGPT (copiar/colar + anexar arquivos)
+
+> Gere o portal GP ContÃ¡bil (Geovania Paes, contadora) em Next.js App Router + TypeScript + Tailwind + shadcn/ui. Stack travada: Next.js + Sanity Free (blog autonomia) + Supabase (leads) + Resend (email) + Vercel. NÃ£o use MDX para blog, use Sanity. NÃ£o crie banco para blog, sÃ³ tabela leads no Supabase.
+>
+> ## 1. ReferÃªncia visual (anexar)
+> - `modelo site/Modelo-323-Onepage-Desktop-scaled.webp`: usar SÃ“ como esqueleto de estrutura/conversÃ£o, 13 seÃ§Ãµes: 1 header fixo + topbar, 2 hero 50/50 texto esq + foto cÃ­rculo dir + CTA pill, 3 faixa 3 diferenciais, 4 grid cards segmentos, 5 sobre foto esq + checklist + nÃºmeros, 6 grid 6 serviÃ§os, 7 blog 3 cards, 8 depoimentos fundo escuro + foto cÃ­rculo, 9 4 passos 01-04, 10 FAQ acordeÃ£o + CTA, 11 contato info + form, 12 CTA final, 13 footer + Whats flutuante. NÃƒO copiar textos placeholder, lorem ipsum, nem fotos stock.
+> - Hero travado: `images/webp/img6.webp` (original `images/img6.jpeg`, em pÃ© blazer bege, priority + eager, alt "Geovania Paes, contadora"). Sobre: `images/webp/img4.webp`. HumanizaÃ§Ã£o/Reforma: `images/webp/img5.webp`. Originais PF/Empresas/MEI (`img1-3`) sÃ£o sÃ³ copy, nÃ£o publicar como foto.
+>
+> ## 2. Copy real (substituir tudo do modelo)
+> Bio: Sou Geovania Paes, Contadora hÃ¡ 14 anos, formada em CiÃªncias ContÃ¡beis, MBA em Direito TributÃ¡rio, pÃ³s em Empreendedorismo ContÃ¡bil e Controladoria Financeira. Especialista em Reforma TributÃ¡ria.
+> H1: Contabilidade estratÃ©gica para PF, MEI e Empresas. Sub: bio acima. CTAs: [Agendar no WhatsApp] primÃ¡rio / [Ver serviÃ§os] secundÃ¡rio.
+> PF: DeclaraÃ§Ã£o IR, IR profissionais liberais, CarnÃª-LeÃ£o, Ganho capital, RegularizaÃ§Ã£o CPF, Parcelamento IR, SaÃ­da Definitiva do PaÃ­s, Livro Caixa, Planejamento tributÃ¡rio para mÃ©dicos e saÃºde, Consultoria financeira pessoal.
+> Empresas: Abertura, AlteraÃ§Ã£o contratual, Baixa, Planejamento tributÃ¡rio, Assessoria mensal, ApuraÃ§Ã£o impostos, ObrigaÃ§Ãµes acessÃ³rias, Folha pagamento, PrÃ³-labore, RegularizaÃ§Ã£o fiscal, Parcelamento dÃ©bitos, CertidÃµes negativas, Consultoria contÃ¡bil/financeira, Fluxo caixa, AnÃ¡lise lucro/desempenho.
+> MEI: Abertura, RegularizaÃ§Ã£o, Baixa, DAS mensal, DASN-SIMEI anual, Parcelamento, Desenquadramento, AlteraÃ§Ã£o cadastral, NF, MEI inapto/suspenso, MigraÃ§Ã£o para ME.
+> Prova no lugar de 107+/50+: 14+ anos / MBA TributÃ¡rio / Especialista Reforma. Blog vira: Reforma TributÃ¡ria explicada.
+>
+> ## 3. Rotas
+> `/`, `/sobre`, `/servicos-pf`, `/para-empresas`, `/mei`, `/reforma-tributaria`, `/blog`, `/blog/[slug]`, `/contato`, `/politica-privacidade`, `/studio` (Sanity).
+>
+> ## 4. Design system
+> Tokens: --bg-dark #141416, --bege #E9D9C6, --taupe #8A837E, --lilas #E8E0F3, --bg-light #F6F4F0, --text #1A1A1E. Serifada display H1/H2 + Inter corpo. Pill botÃµes, 12px cards, seÃ§Ã£o 80px desktop / 48px mobile. shadcn: Button, Card, Accordion, Form/Input/Textarea, Badge. lucide-react Ã­cones, motion reveal + count-up + smooth scroll.
+>
+> ## 5. Blog Sanity Free (ela posta sozinha)
+> Schema post: title, slug, excerpt 160, cover 1200x630 webp <300KB, content Portable Text, category [reforma, ir, mei, empresas], publishedAt, seoTitle, seoDesc, featured. Studio em `/studio`, role editor para ela, revalidate 60s, generateStaticParams /blog/[slug], webhook /api/revalidate. Ver `docs/sanity-cms.md` para limites Free: 10k docs, 1M CDN/mÃªs, 250k API/mÃªs, 100GB assets/bandwidth, bloqueio duro sem overage.
+>
+> ## 6. Leads Whats + Email (Supabase + Resend, ver `.env.example`)
+> Tabela leads: id uuid, nome, email, whatsapp, segmento [pf, mei, empresas, reforma, outro], mensagem, origem, consent_lgpd bool, created_at. RLS insert pÃºblico validado com zod, select sÃ³ service_role. Fluxo: valida â†’ insert â†’ Resend para LEAD_NOTIFY_EMAIL (placeholder contato@gpcontabil.com.br) + confirmaÃ§Ã£o ao lead â†’ botÃ£o wa.me NEXT_PUBLIC_WHATSAPP_NUMBER com texto prÃ©-preenchido. Checkbox LGPD obrigatÃ³rio + /politica-privacidade.
+>
+> ## 7. TÃ©cnico
+> SEO por pÃ¡gina + sitemap + OG com img6, webp lazy exceto hero, acessibilidade contraste, form react-hook-form + zod. Deploy Vercel. Env conforme `.env.example`.
+>
+> ## Entrega esperada
+> Estrutura de pastas, design tokens, componentes por seÃ§Ã£o, schema Sanity, SQL leads + RLS, API form + Resend + revalidate, pÃ¡ginas com copy real, README de setup. Pergunte antes se faltar projectId Sanity, Supabase URL/keys ou Resend key.
+>
+> Anexos para enviar junto: este prompt + `docs/stack.md` + `docs/sanity-cms.md` + `docs/imagens.md` + `.env.example` + `images/webp/img6.webp` + `img4.webp` + `modelo site/...webp`.
+# GP ContÃ¡bil â€” Stack travada
+
+`Next.js (App Router) + TypeScript + Tailwind + shadcn/ui + Sanity Free (blog) + Supabase (leads) + Resend (email) + Vercel`
+
+Modelo visual: `modelo site/Modelo-323-Onepage-Desktop-scaled.webp` (13 seÃ§Ãµes, sÃ³ esqueleto).
+Hero travado: `images/img6.jpeg` (em pÃ©, blazer bege). Sobre: `images/img4.jpeg` (sentada, fundo lilÃ¡s).
+
+## Estrutura futura
+```
+/app /(site)/page.tsx /sobre /servicos-pf /para-empresas /mei /reforma-tributaria /blog /blog/[slug] /contato
+/components/ui (shadcn: Button, Card, Accordion, Form, Input, Badge)
+/sanity (schema post)
+/lib (sanity.client, supabase, resend, whatsapp)
+```
+
+## Env (ver .env.example)
+- `LEAD_NOTIFY_EMAIL=contato@gpcontabil.com.br` (genÃ©rico, trocar com a cliente)
+- Sanity: projectId, dataset=production, read token, revalidate secret
+- Supabase: url + anon key (insert lead) â€” select sÃ³ via service_role no server
+- Resend: api key + from
+
+## Leads: Whats + Email, sem login
+Tabela `leads (id, nome, email, whatsapp, segmento, mensagem, origem, consent_lgpd, created_at)`.
+Fluxo: valida zod â†’ insert Supabase â†’ Resend para LEAD_NOTIFY_EMAIL + confirmaÃ§Ã£o ao lead â†’ botÃ£o wa.me com texto prÃ©-preenchido. Checkbox LGPD obrigatÃ³rio.
+
+## Design tokens (base imagem 6)
+`--bg-dark #141416, --bege #E9D9C6, --taupe #8A837E, --lilas #E8E0F3, --bg-light #F6F4F0, --text #1A1A1E`
+Serifada display H1/H2 + Inter corpo. Pill em botÃµes, 12px cards. SeÃ§Ã£o 80px desktop / 48px mobile.
+
+## Docs
+- `docs/sanity-cms.md` â€” uso diÃ¡rio da Geovania + limites Free + setup dev
+- `docs/imagens.md` â€” mapa das 6 fotos + webp
+# Sanity CMS â€” Plano Free (GP ContÃ¡bil)
+
+DecisÃ£o travada: **Sanity Free** para a Geovania publicar sozinha, sem depender do dev.
+
+Fonte dos limites: pricing oficial Sanity + docs Plans and payments (consulta em 16/09/2026).
+Valores mudam sem aviso â€” conferir em https://www.sanity.io/pricing antes de orÃ§ar.
+
+## 1. O que o Free inclui ($0 forever)
+
+- 20 seats (sÃ³ roles Administrator e Viewer). Viewer Ã© grÃ¡tis e nÃ£o consome seat.
+- 2 datasets, **apenas pÃºblicos**
+- 10.000 documents (inclui drafts, soma todos datasets)
+- 2.000 unique attributes por dataset
+- 1.000.000 API CDN requests / mÃªs
+- 250.000 API requests / mÃªs
+- 100 GB assets (total armazenado)
+- 100 GB bandwidth / mÃªs (API + CDN + assets)
+- 2 GROQ-powered webhooks
+- 1.000 live connections por dataset, retenÃ§Ã£o 15 min
+- Content types e locales ilimitados, real-time, history, visual editing / Presentation
+- Sem cartÃ£o de crÃ©dito
+
+## 2. Limites duros do Free (importante)
+
+Free **nÃ£o tem overage**. Se bater o teto, **bloqueia atÃ© virar o mÃªs (00:00 UTC dia 1) ou atÃ© upgrade**:
+
+- Documents cheio â†’ nÃ£o cria nada novo, nem draft.
+- API / CDN / Bandwidth cheio â†’ conteÃºdo para de ser servido, email de alerta aos admins em 80% e 100%.
+- NÃ£o dÃ¡ para "desgastar" uso de API/bandwidth no mÃªs corrente. SÃ³ esperando reset ou migrando para Growth.
+- Assets Ã© total acumulado, nÃ£o reseta. Se lotar 100 GB, precisa apagar ou upgradear.
+
+Para este projeto (blog contÃ¡bil, ~4-8 posts/mÃªs, 1-2 editoras) o Free dura anos.
+Exemplo: 500 posts com 5 imagens de 300 KB = ~2.500 documents + ~750 MB assets. Longe do teto.
+
+## 3. Quando migrar para Growth ($15/seat/mÃªs)
+
+- Precisar de role Editor / Developer / Contributor, dataset privado, comments/tasks, scheduled drafts, AI Assist.
+- Precisar de 25.000 documents ou pagar overage em vez de bloquear:
+  overages Growth (2026): $1 / 250k CDN req, $1 / 25k API req, $0,50 / GB asset extra, $0,30 / GB bandwidth extra.
+- AtenÃ§Ã£o: Growth **nÃ£o aumenta** CDN/API/bandwidth incluÃ­dos (continua 1M / 250k / 100 GB). O que muda Ã© poder estourar pagando, em vez de bloquear.
+
+Trial Growth de 30 dias existe, sem cartÃ£o, mas com os mesmos tetos do Free e expira â†’ volta para Free (datasets privados viram pÃºblicos, roles nÃ£o-admin viram viewer).
+
+## 4. Como a Geovania usa (sem dev)
+
+1. Acessa `https://seusite.com.br/studio` e loga com Google.
+2. ConteÃºdo â†’ Post â†’ Criar.
+3. Preenche: tÃ­tulo, slug auto, resumo 160 chars, capa 1200x630, conteÃºdo (negrito, listas, links), categoria [reforma, ir, mei, empresas], data publicaÃ§Ã£o.
+4. Revisa preview â†’ Publicar. Entra no ar em ~1 min via `revalidate`.
+5. Para despublicar: Unpublish. Para agendar: sÃ³ no Growth â€” no Free publica na hora.
+
+Regras: sempre capa webp < 300 KB, mÃ­nimo 300 caracteres, categoria obrigatÃ³ria, nÃ£o colar texto direto do Word sem limpar formataÃ§Ã£o.
+
+## 5. Como o dev configura (uma vez)
+
+```bash
+npm i next-sanity @sanity/image-url
+npx sanity@latest init --project <id> --dataset production
+```
+
+Schema `post`:
+`title, slug, excerpt, cover, content (Portable Text), category, publishedAt, seoTitle, seoDesc, featured`
+
+`.env.local`:
+```
+NEXT_PUBLIC_SANITY_PROJECT_ID=
+NEXT_PUBLIC_SANITY_DATASET=production
+SANITY_API_READ_TOKEN=
+SANITY_REVALIDATE_SECRET=
+```
+
+Next.js: `fetch` com `next: { revalidate: 60 }`, `generateStaticParams` para `/blog/[slug]`, webhook Sanity â†’ `/api/revalidate`.
+
+Monitorar uso em Manage â†’ Plan. Cadastrar email do dev para alertas 80%/100%.
+# Imagens â€” mapa + webp
+
+Originais em `images/*.jpeg`, otimizadas em `images/webp/*.webp` (geradas no build).
+
+| Arquivo | Uso travado | Notas |
+|---|---|---|
+| img6.jpeg (33 KB) | HERO `/` lado direito, cÃ­rculo, `priority + eager`, alt "Geovania Paes, contadora" | Em pÃ©, blazer bege. NÃ£o usar lazy aqui. |
+| img4.jpeg (74 KB) | Sobre, metade esquerda | Sentada, fundo lilÃ¡s. |
+| img5.jpeg (1,6 MB) | HumanizaÃ§Ã£o / Reforma | Externa letra G. Maior arquivo, comprimir com mais forÃ§a. |
+| img1/jpeg, img2, img3 (~87-97 KB) | ConteÃºdo, nÃ£o hero | SÃ£o cards de texto PF/Empresas/MEI. Serviram para extrair copy, nÃ£o precisam ir para o site como foto. |
+| modelo site/*.webp | ReferÃªncia estrutura | NÃ£o publicar. |
+
+Regras: capa Sanity 1200x630 webp < 300 KB, posts com alt, `sizes` responsivo.
+ConversÃ£o: `sharp` qualidade 80 hero, 75 demais, `metadata: false`.
+# Placeholder â€” trocar com a cliente
+LEAD_NOTIFY_EMAIL=contato@gpcontabil.com.br
+NEXT_PUBLIC_WHATSAPP_NUMBER=5500000000000
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+
+# Sanity Free
+NEXT_PUBLIC_SANITY_PROJECT_ID=
+NEXT_PUBLIC_SANITY_DATASET=production
+SANITY_API_READ_TOKEN=
+SANITY_REVALIDATE_SECRET=
+
+# Supabase (leads)
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+SUPABASE_SERVICE_ROLE_KEY=
+
+# Resend (email)
+RESEND_API_KEY=
+RESEND_FROM_EMAIL=GP ContÃ¡bil <contato@gpcontabil.com.br>
+Sou Geovania Paes, Contadora atuante na Ã¡rea hÃ¡ 14 anos, Formada em CiÃªncias ContÃ¡beis, com MBA em Direito TributÃ¡rio, pÃ³s graduada em Empreendedorismo ContÃ¡bil e Controladoria financeira. Atualmente estou me especializando em reforma tributÃ¡ria.
