@@ -22,13 +22,13 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-ink/10 bg-cream/95 backdrop-blur">
       <div className="bg-ink-dark text-cream">
-        <div className="container flex items-center justify-between py-1.5 text-xs">
-          <p>Contabilidade estratégica para PF, MEI e Empresas</p>
+        <div className="container flex items-center justify-between gap-2 py-1.5 text-xs">
+          <p className="min-w-0 truncate">Contabilidade estratégica para PF, MEI e Empresas</p>
           <a
             href={whatsappUrlFor("atendimento geral")}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 font-semibold hover:underline"
+            className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap font-semibold hover:underline"
           >
             <MessageCircle className="size-3.5" aria-hidden />
             Agendar no WhatsApp

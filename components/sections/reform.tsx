@@ -19,7 +19,7 @@ export function ReformTributaria() {
               forma clara, profissional e sem alarmismo.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Button asChild variant="primary">
+              <Button asChild variant="primary" className="text-center">
                 <a
                   href={whatsappUrlFor("Reforma Tributária")}
                   target="_blank"

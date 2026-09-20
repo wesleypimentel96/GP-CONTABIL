@@ -11,7 +11,7 @@ export function Hero() {
       <div className="container grid items-center gap-10 py-12 md:py-20 lg:grid-cols-2">
         <div className="flex flex-col items-start gap-5">
           <Badge variant="lilas">Contadora há 14 anos</Badge>
-          <h1 id="hero-title" className="font-display text-4xl font-bold leading-tight md:text-5xl">
+          <h1 id="hero-title" className="font-display text-[1.75rem] font-bold leading-snug md:text-4xl lg:text-5xl">
             Contabilidade estratégica para <span className="text-taupe">PF, MEI e Empresas</span>
           </h1>
           <p className="max-w-xl text-lg text-ink/70">{BIO_CURTA}</p>
@@ -23,13 +23,13 @@ export function Hero() {
               </li>
             ))}
           </ul>
-          <div className="flex flex-wrap gap-3">
-            <Button asChild variant="primary" size="lg">
+          <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+            <Button asChild variant="primary" size="lg" className="w-full justify-center sm:w-auto">
               <a href={whatsappUrlFor("atendimento geral")} target="_blank" rel="noopener noreferrer">
                 Agendar no WhatsApp
               </a>
             </Button>
-            <Button asChild variant="outline" size="lg">
+            <Button asChild variant="outline" size="lg" className="w-full justify-center sm:w-auto">
               <a href="#servicos">
                 Ver serviços
                 <ArrowRight className="size-4" aria-hidden />
