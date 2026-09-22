@@ -32,21 +32,34 @@ export function Footer() {
         </nav>
         <div>
           <p className="text-sm font-semibold uppercase tracking-wide text-cream/60">Atendimento</p>
-          <a
-            href={whatsappUrlFor("atendimento geral")}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-3 inline-flex items-center gap-2 rounded-pill bg-bege px-5 py-2.5 text-sm font-semibold text-ink-dark hover:bg-bege-dark"
-          >
-            Fale com a Geovania
-          </a>
+          <ul className="mt-3 space-y-2 text-sm">
+            <li>
+              <a
+                href={whatsappUrlFor("atendimento geral")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
+                WhatsApp: (82) 9930-3480
+              </a>
+            </li>
+            <li>
+              <a href="mailto:assessoriacontabilgap@gmail.com" className="hover:underline">
+                assessoriacontabilgap@gmail.com
+              </a>
+            </li>
+            <li>
+              <Link href="/contato" className="hover:underline">
+                Formulário de contato
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
       <div className="border-t border-cream/15">
         <div className="container flex flex-col gap-2 py-4 text-xs text-cream/60 md:flex-row md:items-center md:justify-between">
           <p>© {new Date().getFullYear()} GP Contábil — Geovania Paes. Todos os direitos reservados.</p>
           <p>
-            CNPJ, endereço e telefone serão publicados após validação da cliente.{" "}
             <span className="opacity-80">
               Desenvolvido por{" "}
               <a
@@ -55,7 +68,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="underline underline-offset-2 hover:text-cream"
               >
-                WP Coding
+                WP.Coding
               </a>
             </span>
           </p>
