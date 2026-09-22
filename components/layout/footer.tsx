@@ -45,7 +45,20 @@ export function Footer() {
       <div className="border-t border-cream/15">
         <div className="container flex flex-col gap-2 py-4 text-xs text-cream/60 md:flex-row md:items-center md:justify-between">
           <p>© {new Date().getFullYear()} GP Contábil — Geovania Paes. Todos os direitos reservados.</p>
-          <p>CNPJ, endereço e telefone serão publicados após validação da cliente.</p>
+          <p>
+            CNPJ, endereço e telefone serão publicados após validação da cliente.{" "}
+            <span className="opacity-80">
+              Desenvolvido por{" "}
+              <a
+                href="https://wesleypimenteldev.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 hover:text-cream"
+              >
+                WP Coding
+              </a>
+            </span>
+          </p>
         </div>
       </div>
     </footer>
