@@ -28,11 +28,10 @@ export function Header() {
             href={whatsappUrlFor("atendimento geral")}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap font-semibold hover:underline"
+            className="hidden shrink-0 items-center gap-1 whitespace-nowrap font-semibold hover:underline min-[420px]:inline-flex"
           >
             <MessageCircle className="size-3.5" aria-hidden />
-            <span className="min-[420px]:hidden">WhatsApp</span>
-            <span className="hidden min-[420px]:inline">Agendar no WhatsApp</span>
+            Agendar no WhatsApp
           </a>
         </div>
       </div>
