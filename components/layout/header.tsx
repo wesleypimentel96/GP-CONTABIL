@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X, MessageCircle } from "lucide-react";
+import { Menu, X, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { whatsappUrlFor } from "@/lib/whatsapp";
 import { cn } from "@/lib/utils";
@@ -25,13 +25,12 @@ export function Header() {
         <div className="container flex items-center justify-between gap-2 py-1.5 text-xs">
           <p className="min-w-0 truncate">Contabilidade estratégica para PF, MEI e Empresas</p>
           <a
-            href={whatsappUrlFor("atendimento geral")}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden shrink-0 items-center gap-1 whitespace-nowrap font-semibold hover:underline min-[420px]:inline-flex"
+            href="mailto:assessoriacontabilgap@gmail.com"
+            aria-label="Enviar e-mail para a GP Contábil"
+            className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap font-semibold hover:underline"
           >
-            <MessageCircle className="size-3.5" aria-hidden />
-            Agendar no WhatsApp
+            <Mail className="size-3.5" aria-hidden />
+            <span className="hidden sm:inline">assessoriacontabilgap@gmail.com</span>
           </a>
         </div>
       </div>
