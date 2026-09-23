@@ -20,6 +20,7 @@ body {
   color: var(--text);
   font-family: Inter, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
 }
 
 .font-display {

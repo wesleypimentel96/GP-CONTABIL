@@ -44,7 +44,7 @@ export function Footer() {
               </a>
             </li>
             <li>
-              <a href="mailto:assessoriacontabilgap@gmail.com" className="hover:underline">
+              <a href="mailto:assessoriacontabilgap@gmail.com" className="break-all hover:underline">
                 assessoriacontabilgap@gmail.com
               </a>
             </li>

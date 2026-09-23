@@ -31,7 +31,8 @@ export function Header() {
             className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap font-semibold hover:underline"
           >
             <MessageCircle className="size-3.5" aria-hidden />
-            Agendar no WhatsApp
+            <span className="min-[420px]:hidden">WhatsApp</span>
+            <span className="hidden min-[420px]:inline">Agendar no WhatsApp</span>
           </a>
         </div>
       </div>

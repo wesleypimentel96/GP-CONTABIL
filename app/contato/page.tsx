@@ -61,9 +61,9 @@ export default function ContatoPage() {
                 <li>
                   <a
                     href="mailto:assessoriacontabilgap@gmail.com"
-                    className="inline-flex items-center gap-2.5 font-semibold hover:underline"
+                    className="inline-flex min-w-0 items-center gap-2.5 break-all font-semibold hover:underline"
                   >
-                    <span className="inline-flex size-9 items-center justify-center rounded-card bg-bege text-ink-dark">
+                    <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-card bg-bege text-ink-dark">
                       <Mail className="size-4" aria-hidden />
                     </span>
                     assessoriacontabilgap@gmail.com
