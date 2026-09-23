@@ -20,11 +20,14 @@ export function LeadForm({ dark = false, origem = "site" }: { dark?: boolean; or
     register,
     handleSubmit,
     reset,
+    watch,
     formState: { errors, isSubmitting },
   } = useForm<LeadInput>({
     resolver: zodResolver(leadSchema),
     defaultValues: { origem, mensagem: "", company: "", consent_lgpd: undefined as unknown as true },
   });
+  const MESSAGE_MAX = 2000;
+  const messageLength = (watch("mensagem") ?? "").length;
 
   async function onSubmit(data: LeadInput) {
     setStatus({ type: "idle" });
@@ -98,8 +101,27 @@ export function LeadForm({ dark = false, origem = "site" }: { dark?: boolean; or
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <Label htmlFor="lead-mensagem" className={fieldCls}>Mensagem <span className={dark ? "text-cream/50" : "text-ink/50"}>(opcional)</span></Label>
-        <Textarea id="lead-mensagem" placeholder="Conte brevemente sua necessidade" className={inputCls} {...register("mensagem")} />
+        <div className="flex items-baseline justify-between gap-2">
+          <Label htmlFor="lead-mensagem" className={fieldCls}>Mensagem <span className={dark ? "text-cream/50" : "text-ink/50"}>(opcional)</span></Label>
+          <span
+            className={dark ? "text-xs text-cream/50" : "text-xs text-ink/50"}
+            aria-live="polite"
+            aria-label={`${messageLength} de ${MESSAGE_MAX} caracteres usados`}
+          >
+            {messageLength}/{MESSAGE_MAX}
+          </span>
+        </div>
+        <Textarea
+          id="lead-mensagem"
+          placeholder="Conte brevemente sua necessidade"
+          maxLength={MESSAGE_MAX}
+          aria-describedby="lead-mensagem-contador"
+          className={`${inputCls} max-h-[300px] resize-y`.trim()}
+          {...register("mensagem")}
+        />
+        <span id="lead-mensagem-contador" className="sr-only" aria-live="polite">
+          {messageLength} de {MESSAGE_MAX} caracteres usados
+        </span>
         {errors.mensagem && <p className="text-xs text-red-400" role="alert">{errors.mensagem.message}</p>}
       </div>
 
