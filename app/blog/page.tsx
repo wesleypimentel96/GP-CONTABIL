@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogPage() {
+  // BLOG SUSPENSO — redirecionamento via middleware.ts; este arquivo está intacto
   const posts = await getAllPosts();
   return (
     <PageShell>

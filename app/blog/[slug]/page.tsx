@@ -53,6 +53,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 export default async function PostPage({ params }: { params: { slug: string } }) {
+  // BLOG SUSPENSO — redirecionamento via middleware.ts; este arquivo está intacto
   const post = await getPost(params.slug);
   if (!post) notFound();
   const coverUrl = post.cover ? urlFor(post.cover).width(1200).url() : null;

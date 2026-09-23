@@ -13,7 +13,7 @@ const NAV = [
   { href: "/para-empresas", label: "Empresas" },
   { href: "/mei", label: "MEI" },
   { href: "/reforma-tributaria", label: "Reforma Tributária" },
-  { href: "/blog", label: "Blog" },
+  // BLOG SUSPENSO — { href: "/blog", label: "Blog" }, ver docs/blog-pausado.md
   { href: "/contato", label: "Contato" },
 ];
 

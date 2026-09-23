@@ -19,7 +19,7 @@ export function Footer() {
             <li><Link href="/servicos-pf" className="hover:underline">Pessoa Física</Link></li>
             <li><Link href="/para-empresas" className="hover:underline">Empresas</Link></li>
             <li><Link href="/mei" className="hover:underline">MEI</Link></li>
-            <li><Link href="/blog" className="hover:underline">Blog</Link></li>
+            {/* BLOG SUSPENSO — <li><Link href="/blog">Blog</Link></li>, ver docs/blog-pausado.md */}
           </ul>
         </nav>
         <nav aria-label="Serviços no rodapé">

@@ -7,14 +7,14 @@ import { Differentials } from "@/components/sections/differentials";
 import { Segments } from "@/components/sections/segments";
 import { About } from "@/components/sections/about";
 import { Services } from "@/components/sections/services";
-import { BlogPreview } from "@/components/sections/blog-preview";
+// BLOG SUSPENSO — ver docs/blog-pausado.md para reativar
 import { ReformTributaria } from "@/components/sections/reform";
 import { Humanizacao } from "@/components/sections/humanizacao";
 import { Steps } from "@/components/sections/steps";
 import { Faq } from "@/components/sections/faq";
 import { Contact } from "@/components/sections/contact";
 import { FinalCta } from "@/components/sections/final-cta";
-import { getLatestPosts } from "@/lib/sanity/posts";
+// BLOG SUSPENSO — getLatestPosts preservado em lib/sanity/posts.ts
 
 export const revalidate = 60;
 
@@ -26,7 +26,6 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-  const posts = await getLatestPosts();
   return (
     <>
       <Header />
@@ -36,7 +35,7 @@ export default async function HomePage() {
         <Segments />
         <About />
         <Services />
-        <BlogPreview posts={posts} />
+        {/* BLOG SUSPENSO — <BlogPreview posts={posts} /> removido, ver docs/blog-pausado.md */}
         <ReformTributaria />
         <Humanizacao />
         <Steps />
